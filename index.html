@@ -60,7 +60,7 @@
             margin-top: 20px;
             display: inline-block;
         }
-        button:hover {
+  button:hover {
             background-color: #006060;
         }
     </style>
@@ -77,7 +77,7 @@
 </head>
 <body>
     <header class="header">
-        <img src="Images/Logo.jpeg" alt="Logotipo" style="width: 100px;">
+        <img src="Logo.jpeg" alt="Logotipo" style="width: 100px;">
         <h1>Yucatán: Un paraíso por descubrir</h1>
         <nav>
             <a href="#" onclick="showPlace('inicio')">Inicio</a>
@@ -86,6 +86,7 @@
             <a href="#" onclick="showPlace('merida')">Mérida</a>
             <a href="#" onclick="showPlace('izamal')">Izamal</a>
             <a href="#" onclick="showPlace('motul')">Motul</a>
+            <a href="#" onclick="showPlace('contacto')">Contacto</a>
         </nav>
     </header>
 
@@ -95,35 +96,35 @@
         <p>Descubre la belleza y la historia de Yucatán.</p>
         <p>Dirección: C. 29, Sta Rita, 97702 Tizimín, Yuc.</p>
         <p>Contacto: 986 863 4279</p>
-        <img src="Images/YUCATAN-INTERIOR.jpg" alt="Imagen principal de Yucatán">
+        <img src="YUCATAN-INTERIOR.jpg" alt="Imagen principal de Yucatán">
     </section>
 
     <!-- Sección de Conkal -->
     <section id="conkal" class="content">
         <h2>Conkal</h2>
         <p>Descripción de Conkal, un lugar lleno de historia y cultura.</p>
-        <img src="Images/conkal.jpg" alt="Imagen de Conkal">
+        <img src="conkal.jpg" alt="Imagen de Conkal">
     </section>
 
     <!-- Sección de Tizimín -->
     <section id="tizimin" class="content">
         <h2>Tizimín</h2>
         <p>Explora Tizimín, conocido por su tradicional feria de los Reyes.</p>
-        <img src="Images/tizimin.jpg" alt="Imagen de Tizimín">
+        <img src="tizimin.jpg" alt="Imagen de Tizimín">
     </section>
 
     <!-- Sección de Mérida -->
     <section id="merida" class="content">
         <h2>Mérida</h2>
         <p>Descubre Mérida, la capital cultural de Yucatán.</p>
-        <img src="Images/merida.jpg" alt="Imagen de Mérida">
+        <img src="merida.jpg" alt="Imagen de Mérida">
     </section>
 
     <!-- Sección de Izamal -->
     <section id="izamal" class="content">
-        <h2>Izamal</h2>
+<h2>Izamal</h2>
         <p>Izamal es una hermosa ciudad colonial fundada a mediados del siglo XVI sobre los vestigios de una antigua ciudad maya. Conocida como "La Ciudad de las Tres Culturas."</p>
-        <img src="Images/Izamal1.jpg" alt="Imagen de Izamal">
+        <img src="Izamal1.jpg" alt="Imagen de Izamal">
         <button onclick="showPlace('inicio')">Volver al inicio</button>
     </section>
 
@@ -135,22 +136,10 @@
         <button onclick="showPlace('inicio')">Volver al inicio</button>
     </section>
 
-    <section id="contacto">
+    <section id="contacto" class="content">
         <h2>Contacto</h2>
         <form action="guardar_datos.php" method="post">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="telefono">Número de Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
-            
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-            
-            <button type="submit">Enviar</button>
+            <button type="submit">Entrar</button>
         </form>
     </section>
 </body>
