@@ -3,144 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yucatán: Un paraíso por descubrir</title>
+    <title>Inicio de Sesión</title>
     <style>
         body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            color: #333;
-        }
-        .header {
-            background-color: #008080;
-            color: #fff;
-            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-        .header h1 {
+            height: 100vh;
             margin: 0;
-            font-size: 2em;
-            color: #FFD700;
         }
-        nav a {
-            background-color: #d19595;
-            color: #333;
-            padding: 8px 16px;
-            margin: 0 5px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #b37d7d;
-        }
-        .content {
-            display: none; /* Ocultamos todas las secciones inicialmente */
+        .login-container {
+            background-color: #fff;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
         }
-        .content.active {
-            display: block; /* Mostrar solo la sección activa */
-        }
-        .content h2 {
+        .login-container h2 {
             color: #008080;
         }
-        .content img {
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
             width: 100%;
-            max-width: 600px;
-            height: auto;
-            margin: 20px 0;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        button {
+        .login-container button {
             background-color: #008080;
             color: white;
+            padding: 10px;
+            width: 100%;
             border: none;
-            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
-            display: inline-block;
         }
-  button:hover {
+        .login-container button:hover {
             background-color: #006060;
         }
-    </style>
-    <script>
-        function showPlace(placeId) {
-            const sections = document.querySelectorAll('.content');
-            sections.forEach((section) => section.classList.remove('active'));
-            document.getElementById(placeId).classList.add('active');
+        .error {
+            color: red;
         }
-        window.onload = function() {
-            showPlace('inicio');
-        };
-    </script>
+    </style>
 </head>
 <body>
-    <header class="header">
-        <img src="Logo.jpeg" alt="Logotipo" style="width: 100px;">
-        <h1>Yucatán: Un paraíso por descubrir</h1>
-        <nav>
-            <a href="#" onclick="showPlace('inicio')">Inicio</a>
-            <a href="#" onclick="showPlace('conkal')">Conkal</a>
-            <a href="#" onclick="showPlace('tizimin')">Tizimín</a>
-            <a href="#" onclick="showPlace('merida')">Mérida</a>
-            <a href="#" onclick="showPlace('izamal')">Izamal</a>
-            <a href="#" onclick="showPlace('motul')">Motul</a>
-            <a href="#" onclick="showPlace('contacto')">Contacto</a>
-        </nav>
-    </header>
 
-    <!-- Sección de Inicio -->
-    <section id="inicio" class="content active">
-        <h2>Bienvenidos al Turismo en Yucatán</h2>
-        <p>Descubre la belleza y la historia de Yucatán.</p>
-        <p>Dirección: C. 29, Sta Rita, 97702 Tizimín, Yuc.</p>
-        <p>Contacto: 986 863 4279</p>
-        <img src="YUCATAN-INTERIOR.jpg" alt="Imagen principal de Yucatán">
-    </section>
+<div class="login-container">
+    <h2>Inicio de Sesión</h2>
+    <form action="login.php" method="post">
+        <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>
+        <input type="password" name="contrasena" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
 
-    <!-- Sección de Conkal -->
-    <section id="conkal" class="content">
-        <h2>Conkal</h2>
-        <p>Descripción de Conkal, un lugar lleno de historia y cultura.</p>
-        <img src="conkal.jpg" alt="Imagen de Conkal">
-    </section>
-
-    <!-- Sección de Tizimín -->
-    <section id="tizimin" class="content">
-        <h2>Tizimín</h2>
-        <p>Explora Tizimín, conocido por su tradicional feria de los Reyes.</p>
-        <img src="tizimin.jpg" alt="Imagen de Tizimín">
-    </section>
-
-    <!-- Sección de Mérida -->
-    <section id="merida" class="content">
-        <h2>Mérida</h2>
-        <p>Descubre Mérida, la capital cultural de Yucatán.</p>
-        <img src="merida.jpg" alt="Imagen de Mérida">
-    </section>
-
-    <!-- Sección de Izamal -->
-    <section id="izamal" class="content">
-<h2>Izamal</h2>
-        <p>Izamal es una hermosa ciudad colonial fundada a mediados del siglo XVI sobre los vestigios de una antigua ciudad maya. Conocida como "La Ciudad de las Tres Culturas."</p>
-        <img src="Izamal1.jpg" alt="Imagen de Izamal">
-        <button onclick="showPlace('inicio')">Volver al inicio</button>
-    </section>
-
-    <!-- Sección de Motul -->
-    <section id="motul" class="content">
-        <h2>Motul</h2>
-        <p>Motul conserva su historia maya y colonial con una arquitectura impresionante y una cultura vibrante.</p>
-        <img src="Images/Motull.jpeg" alt="Imagen de Motul">
-        <button onclick="showPlace('inicio')">Volver al inicio</button>
-    </section>
-
-    <section id="contacto" class="content">
-        <h2>Contacto</h2>
-        <form action="guardar_datos.php" method="post">
-            <button type="submit">Entrar</button>
-        </form>
-    </section>
 </body>
 </html>

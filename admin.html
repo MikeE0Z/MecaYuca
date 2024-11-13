@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yucatán: Un paraíso por descubrir</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .header {
+            background-color: #008080;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #FFD700;
+        }
+        nav a {
+            background-color: #d19595;
+            color: #333;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #b37d7d;
+        }
+        .content {
+            display: none;
+            padding: 20px;
+        }
+        .content.active {
+            display: block;
+        }
+        .content h2 {
+            color: #008080;
+        }
+        button {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #006060;
+        }
+    </style>
+    <script>
+        function showPlace(placeId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach((section) => section.classList.remove('active'));
+            document.getElementById(placeId).classList.add('active');
+        }
+        window.onload = function() {
+            showPlace('inicio');
+        };
+    </script>
+</head>
+<body>
+    <header class="header">
+        <img src="Logo.jpeg" alt="Logotipo" style="width: 100px;">
+        <h1>Yucatán: Un paraíso por descubrir</h1>
+        <nav>
+            <a href="#" onclick="showPlace('inicio')">Inicio</a>
+            <a href="#" onclick="showPlace('comentarios')">Comentarios</a>
+            <a href="#" onclick="showPlace('lugares')">Lugares</a>
+            <a href="#" onclick="showPlace('guias')">Guías</a>
+            <a href="#" onclick="showPlace('contacto')">Contacto</a>
+        </nav>
+    </header>
+
+    <section id="inicio" class="content active">
+        <h2>Bienvenidos al Turismo en Yucatán</h2>
+        <p>Descubre la belleza y la historia de Yucatán.</p>
+        <p>Dirección: C. 29, Sta Rita, 97702 Tizimín, Yuc.</p>
+        <p>Contacto: 986 863 4279</p>
+        <img src="YUCATAN-INTERIOR.jpg" alt="Imagen principal de Yucatán">
+    </section>
+
+    <!-- Sección de Conkal -->
+    <section id="conkal" class="content">
+        <h2>Conkal</h2>
+        <p>Descripción de Conkal, un lugar lleno de historia y cultura.</p>
+        <img src="conkal.jpg" alt="Imagen de Conkal">
+    </section>
+
+    <!-- Sección de Tizimín -->
+    <section id="tizimin" class="content">
+        <h2>Tizimín</h2>
+        <p>Explora Tizimín, conocido por su tradicional feria de los Reyes.</p>
+        <img src="tizimin.jpg" alt="Imagen de Tizimín">
+    </section>
+
+    <!-- Sección de Mérida -->
+    <section id="merida" class="content">
+        <h2>Mérida</h2>
+        <p>Descubre Mérida, la capital cultural de Yucatán.</p>
+        <img src="merida.jpg" alt="Imagen de Mérida">
+    </section>
+
+    <!-- Sección de Izamal -->
+    <section id="izamal" class="content">
+<h2>Izamal</h2>
+        <p>Izamal es una hermosa ciudad colonial fundada a mediados del siglo XVI sobre los vestigios de una antigua ciudad maya. Conocida como "La Ciudad de las Tres Culturas."</p>
+        <img src="Izamal1.jpg" alt="Imagen de Izamal">
+        <button onclick="showPlace('inicio')">Volver al inicio</button>
+    </section>
+
+    <!-- Sección de Motul -->
+    <section id="motul" class="content">
+        <h2>Motul</h2>
+        <p>Motul conserva su historia maya y colonial con una arquitectura impresionante y una cultura vibrante.</p>
+        <img src="Images/Motull.jpeg" alt="Imagen de Motul">
+        <button onclick="showPlace('inicio')">Volver al inicio</button>
+    </section>
+
+    <!-- Sección de Comentarios -->
+    <section id="comentarios" class="content">
+        <h2>Comentarios</h2>
+        <!-- Código PHP para obtener comentarios -->
+        <?php
+        include 'conexion.php';
+        $result = $conn->query("SELECT * FROM comentarios");
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<p><strong>Usuario:</strong> " . $row['id_cliente'] . "<br><strong>Comentario:</strong> " . $row['comentario_usuario'] . "<br><strong>Respuesta Admin:</strong> " . $row['comentario_admin'] . "</p>";
+            }
+        } else {
+            echo "<p>No hay comentarios disponibles.</p>";
+        }
+        ?>
+    </section>
+
+    <!-- Sección de Lugares -->
+    <section id="lugares" class="content">
+        <h2>Gestión de Lugares</h2>
+        <form action="editar_lugares.php" method="post">
+            <label>Nombre del Lugar:</label>
+            <input type="text" name="nombre_lugar" required>
+            <label>Fecha de Inicio:</label>
+            <input type="date" name="fecha_inicio" required>
+            <label>Fecha de Fin:</label>
+            <input type="date" name="fecha_fin" required>
+            <label>Costo por Persona:</label>
+            <input type="number" name="costo_por_persona" step="0.01" required>
+            <label>Descuento (%):</label>
+            <input type="number" name="descuento" step="0.01">
+            <label>Anticipo:</label>
+            <input type="number" name="anticipo" step="0.01" required>
+            <label>Guía Especializado (ID):</label>
+            <input type="number" name="guia_especializado" required>
+            <button type="submit">Guardar Lugar</button>
+        </form>
+    </section>
+
+    <!-- Sección de Guías -->
+    <section id="guias" class="content">
+        <h2>Gestión de Guías</h2>
+        <form action="editar_guias.php" method="post">
+            <label>Nombre del Guía:</label>
+            <input type="text" name="nombre_guia" required>
+            <label>Número de Identificación:</label>
+            <input type="text" name="numero_identificacion" required>
+            <label>Longevidad en la Empresa:</label>
+            <input type="number" name="longevidad" required>
+            <label>Salario:</label>
+            <input type="number" name="salario" step="0.01" required>
+            <button type="submit">Guardar Guía</button>
+        </form>
+    </section>
+
+    <section id="contacto" class="content">
+        <h2>Contacto</h2>
+        <form action="guardar_datos.php" method="post">
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+</body>
+</html>
